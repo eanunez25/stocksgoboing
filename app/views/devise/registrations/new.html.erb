@@ -1,0 +1,40 @@
+<% provide(:title, "Sign Up") %>
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+
+      <div class="fadeIn first">
+        <h1 class="login">Sign Up</h1>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "fadeIn second", type: "text", placeholder: "Username" %>
+      </div>
+
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "fadeIn third", type: "text", placeholder: "Email"  %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "new-password", class: "fadeIn fourth", type: "password", placeholder: "Password" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "fadeIn fifth", type: "password", placeholder: "Confirmation" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "fadeIn sixth btn btn-primary" %>
+      </div>
+
+      <div id="formFooter">
+        <a class="underlineHover" href="/login">Login</a>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>

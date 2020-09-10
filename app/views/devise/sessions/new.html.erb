@@ -1,0 +1,31 @@
+<% provide(:title, "Login") %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+
+      <div class="fadeIn first">
+        <h1 class="login">Login</h1>
+      </div>
+      
+      <div class="field">
+        <%= f.email_field :email, autocomplete: "email", class: "fadeIn second", id: "login", type: "text", placeholder: "Email" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, class: "fadeIn third", id: "login", type: "password", placeholder: "Password" %>
+      </div>
+
+      <%= f.check_box :remember_me, class: "fadeIn fourth" %> <%= f.label :remember_me, class: "fadeIn fourth" %>
+
+      <div class="actions">
+        <%= f.submit "Log in", type: "submit", class: "fadeIn fifth btn btn-primary" %>
+      </div>
+
+      <div id="formFooter">
+        <a class="underlineHover" href="/signup">Sign Up</a>
+      </div>
+
+    </div>
+  </div>
+<% end %>
