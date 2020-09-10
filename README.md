@@ -1,24 +1,13 @@
-# README
+# Boing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Boing is an application that will help keep track of options trades by 
+displaying user inputted floors, ceilings, and strikes and will measure how far each price level is from the underlying's current price. 
 
-Things you may want to cover:
+Boing will keep track of user's calculated buy prices and valuations for equities and calculate how overvalue or undervalued the equity is. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Supported Trades
+- Bear call spreads
+- Bull put spreads
+- Iron condors
+- Selling calls
+- Selling puts
