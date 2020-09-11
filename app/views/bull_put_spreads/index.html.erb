@@ -1,0 +1,21 @@
+<% provide(:title, "BPS") %>
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col text-center">
+    <h1 class="bps">Bull Put Spreads</h1>
+    
+    <% if @bull_put_spreads.empty? %>
+      <div class="row">
+        <div class="col text-center">
+          <p>You have no open BPS positions!</p>
+          <%= link_to "Create BPS", new_bull_put_spread_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% else %>
+      <%= render 'shared/bps' %>
+    <% end %>
+
+
+  </div>
+</div>

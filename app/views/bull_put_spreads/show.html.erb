@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<% title = @bull_put_spread.asset + " " + number_to_currency(@bull_put_spread.strike).to_s %>
+<% provide(:title, title) %>
+
+<div class="row">
+  <div class="col-md-2 offset-md-4">
+    <h5 class="stats"><b>Security:</b></h5>
+    <h5 class="stats"><b>Current Price:</b></h5>
+    <h5 class="stats"><b>Expiration Date:</b></h5>
+    <h5 class="stats"><b>DTE:</b></h5>
+  </div>
+    <div class="col-md-2">
+      <h5 class="stats"><%= @bull_put_spread.asset %></h5>
+      <h5 class="stats"><%= number_to_currency(@rut_price) %></h5>
+      <h5 class="stats"><%= @bull_put_spread.formatted_expiration %></h5>
+      <h5 class="stats"><%= @bull_put_spread.dte %> <%= 'day'.pluralize(@bull_put_spread.dte.to_i) %></h5>
+      <h5 class="stats">(<%= business_days_between(Date.today,@bull_put_spread.expiration) %> trading <%= 'day'.pluralize(@bull_put_spread.dte.to_i) %>)</h5>
+  </div>
+</div><br>
+
+<div class="row">
+  <div class="col text-center">
+    <%= link_to "Edit", edit_bull_put_spread_path, class: "btn btn-primary cards" %>
+    <%= link_to "Delete", bull_put_spread_path, class: "btn btn-danger cards", method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+</div>
+
+<% @floors.each_with_index do |f,i| %>
+  <div class="floor">
+    <% unless f.nil? %>
+      <div class="col text-center"><%= @floor_names[i] %></div>
+      <div class="row">
+        <div class="col-md-6 text-right">
+          <h1 class="floor"><%= number_to_currency(f) %></h1>
+        </div>
+        <div class="col-md-2 text-left my-auto">
+          <p class="stats"><%= number_to_currency(f-@rut_price) %></p>
+          <p class="stats"><%= (((f-@rut_price)/@rut_price)*100).round(2) %>%</p>
+        </div>
+        <div class="col-md-2 text-left my-auto">
+          <p class="stats"><%= number_to_currency((f-@rut_price)/@bull_put_spread.dte) %>/day</p>
+          <p class="stats-small">(approx. <%= (((f-@rut_price)/@rut_price)*100/@bull_put_spread.dte).round(2) %>%)</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
