@@ -1,0 +1,25 @@
+<div class="row">
+  <% @short_puts.each do |bps| %>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= bps.asset %> <%= number_to_currency(bps.strike) %></h5>
+          <% unless bps.floor1.nil? %>
+            <h6 class="card-subtitle mb-2 text-muted">Floor 1</h6>
+            <p class="card-text"><%= number_to_currency(bps.floor1) %></p>
+          <% end %>
+          <% unless bps.floor2.nil? %>
+            <h6 class="card-subtitle mb-2 text-muted">Floor 2</h6>
+            <p class="card-text"><%= number_to_currency(bps.floor2) %></p>
+          <% end %>
+          <h6 class="card-subtitle mb-2 text-muted">DTE</h6>
+          <p class="card-text dte"><%= bps.dte.to_i %> <%= 'day'.pluralize(bps.dte.to_i) %></p>
+          <p class="card-text"><%= bps.expiration.strftime("%m-%d-%y") %></p>
+          <a href="/short_puts/<%= bps.id %>" class="btn-sm btn-primary cards">View</a>
+          <a href="/short_puts/<%= bps.id %>/edit" class="btn-sm btn-primary cards">Edit</a>
+          <%= link_to "Delete", short_put_path(bps), class: "btn-sm btn-danger cards", method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    </div>
+  <% end  %>
+</div>

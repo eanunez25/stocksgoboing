@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :static_pages
   resources :bull_put_spreads
+  resources :short_puts
 
   root 'static_pages#home'
 

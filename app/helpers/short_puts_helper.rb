@@ -1,0 +1,2 @@
+module ShortPutsHelper
+end

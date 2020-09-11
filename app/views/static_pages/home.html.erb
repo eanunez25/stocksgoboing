@@ -1,1 +1,22 @@
 <% provide(:title, "Home") %>
+
+<% unless user_signed_in? %>
+  <div class="row">
+    <div class="col text-center home">
+      <h1>Boing</h1>
+      <p>Keep track of your options trades and equity valuations</p>
+      <%= link_to "Sign up!", signup_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% else %>
+  <% if @bull_put_spreads.empty? %>
+    <div class="row">
+      <div class="col text-center">
+        <h1>Welcome to Boing</h1>
+        <p>You have no trades! Create a new trade from the dropdown menu.</p>
+      </div>
+    </div>
+  <% else %>
+    <%= render 'shared/show_trades' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,49 @@
+<%= form_with(model: short_put, local: true) do |form| %>
+  <% if short_put.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(short_put.errors.count, "error") %> prohibited this short_put from being saved:</h2>
+
+      <ul>
+        <% short_put.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+
+      <div class="fadeIn first">
+        <h1 class="login">Short Put</h1>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :asset, class: "fadeIn second", id: "login", type: "text", placeholder: "Ticker"  %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :floor1, class: "fadeIn third", id: "login", type: "text", placeholder: "Floor 1" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :floor2, class: "fadeIn fourth", id: "login", type: "text", placeholder: "Floor 2" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :strike, class: "fadeIn fifth", id: "login", type: "text", placeholder: "Strike" %>
+      </div>
+
+      <div class="field fadeIn sixth" type="text">
+        <p class="expiration">Expiration:</p>
+        <%= form.date_select :expiration, order: [:month, :day, :year], start_year: Date.today.year  %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Save", type: "submit", class: "fadeIn seventh btn btn-primary" %>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>

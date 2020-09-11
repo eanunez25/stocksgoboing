@@ -1,0 +1,21 @@
+<% provide(:title, "Short Puts") %>
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col text-center">
+    <h1 class="bps">Short Puts</h1>
+    
+    <% if @short_puts.empty? %>
+      <div class="row">
+        <div class="col text-center">
+          <p>You have no open short put positions!</p>
+          <%= link_to "Create Short Put", new_short_put_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% else %>
+      <%= render 'shared/shortput' %>
+    <% end %>
+
+
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_003840) do
+ActiveRecord::Schema.define(version: 2020_09_11_011454) do
 
   create_table "bull_put_spreads", force: :cascade do |t|
     t.decimal "floor1", precision: 8, scale: 2
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2020_09_11_003840) do
     t.date "expiration"
     t.integer "user_id"
     t.string "asset"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "short_puts", force: :cascade do |t|
+    t.decimal "floor1", precision: 8, scale: 2
+    t.decimal "floor2", precision: 8, scale: 2
+    t.decimal "strike", precision: 8, scale: 2
+    t.date "expiration"
+    t.string "asset"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
