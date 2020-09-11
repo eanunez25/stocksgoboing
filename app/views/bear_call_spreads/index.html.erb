@@ -1,0 +1,21 @@
+<% provide(:title, "BPS") %>
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col text-center">
+    <h1 class="bps">Bear Call Spreads</h1>
+    
+    <% if @bear_call_spreads.empty? %>
+      <div class="row">
+        <div class="col text-center">
+          <p>You have no open BCS positions!</p>
+          <%= link_to "Create BCS", new_bear_call_spread_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% else %>
+      <%= render 'shared/bcs' %>
+    <% end %>
+
+
+  </div>
+</div>

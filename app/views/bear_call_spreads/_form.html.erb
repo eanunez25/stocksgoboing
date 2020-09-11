@@ -1,0 +1,49 @@
+<%= form_with(model: bear_call_spread, local: true) do |form| %>
+  <% if bear_call_spread.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bear_call_spread.errors.count, "error") %> prohibited this bear_call_spread from being saved:</h2>
+
+      <ul>
+        <% bear_call_spread.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+
+      <div class="fadeIn first">
+        <h1 class="login">Bear Call Spread</h1>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :asset, class: "fadeIn second", id: "login", type: "text", placeholder: "Ticker"  %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :ceiling1, class: "fadeIn third", id: "login", type: "text", placeholder: "Ceiling 1" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :ceiling2, class: "fadeIn fourth", id: "login", type: "text", placeholder: "Ceiling 2" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :strike, class: "fadeIn fifth", id: "login", type: "text", placeholder: "Strike" %>
+      </div>
+
+      <div class="field fadeIn sixth" type="text">
+        <p class="expiration">Expiration:</p>
+        <%= form.date_select :expiration, order: [:month, :day, :year], start_year: Date.today.year  %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Save", type: "submit", class: "fadeIn seventh btn btn-primary" %>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>

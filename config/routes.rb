@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :static_pages
   resources :bull_put_spreads
   resources :short_puts
+  resources :bear_call_spreads
 
   root 'static_pages#home'
 

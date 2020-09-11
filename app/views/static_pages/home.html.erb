@@ -11,18 +11,22 @@
 <% else %>
   <div class="row">
     <div class="col text-center">
-      <% unless @bull_put_spreads.empty? && @short_puts.empty? %>
+      <% if !@bull_put_spreads.empty? || !@short_puts.empty? || !@bear_call_spreads.empty? %>
         <h1 class="bps">Active Trades</h1>
       <% end %>
       <% unless @bull_put_spreads.empty? %>
         <h2 class="bps">Bull Put Spreads</h2>
         <%= render 'shared/bps' %>
       <% end %>
+      <% unless @bear_call_spreads.empty? %>
+        <h2 class="bps">Bear CallSpreads</h2>
+        <%= render 'shared/bcs' %>
+      <% end %>
       <% unless @short_puts.empty? %>
         <h2 class="bps">Short Puts</h2>
         <%= render 'shared/shortput' %>
       <% end %>
-      <% if @bull_put_spreads.empty? && @short_puts.empty? %>
+      <% if @bull_put_spreads.empty? && @short_puts.empty? && @bear_call_spreads.empty?%>
         <h1>Welcome to Boing</h1>
         <p>You have no trades! Create a new trade from the dropdown menu.</p>
       <% end %>
