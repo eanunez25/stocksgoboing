@@ -1,0 +1,2 @@
+class BearCallSpread < ApplicationRecord
+end
