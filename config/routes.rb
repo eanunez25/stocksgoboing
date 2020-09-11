@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :bull_put_spreads
   resources :short_puts
   resources :bear_call_spreads
+  resources :short_calls
 
   root 'static_pages#home'
 

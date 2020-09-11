@@ -1,5 +1,5 @@
 <div class="row">
-  <% @bear_call_spreads.each do |bps| %>
+  <% @short_calls.each do |bps| %>
     <div class="col-sm-3">
       <div class="card">
         <div class="card-body">
@@ -15,9 +15,9 @@
           <h6 class="card-subtitle mb-2 text-muted">DTE</h6>
           <p class="card-text dte"><%= bps.dte.to_i %> <%= 'day'.pluralize(bps.dte.to_i) %></p>
           <p class="card-text"><%= bps.expiration.strftime("%m-%d-%y") %></p>
-          <a href="/bear_call_spreads/<%= bps.id %>" class="btn-sm btn-primary cards">View</a>
-          <a href="/bear_call_spreads/<%= bps.id %>/edit" class="btn-sm btn-primary cards">Edit</a>
-          <%= link_to "Delete", bear_call_spread_path(bps), class: "btn-sm btn-danger cards", method: :delete, data: { confirm: "Are you sure?" } %>
+          <a href="/short_calls/<%= bps.id %>" class="btn-sm btn-primary cards">View</a>
+          <a href="/short_calls/<%= bps.id %>/edit" class="btn-sm btn-primary cards">Edit</a>
+          <%= link_to "Delete", short_call_path(bps), class: "btn-sm btn-danger cards", method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
       </div>
     </div>

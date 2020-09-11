@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_164635) do
+ActiveRecord::Schema.define(version: 2020_09_11_180152) do
 
   create_table "bear_call_spreads", force: :cascade do |t|
     t.decimal "ceiling1", precision: 8, scale: 2
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 2020_09_11_164635) do
     t.date "expiration"
     t.integer "user_id"
     t.string "asset"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "short_calls", force: :cascade do |t|
+    t.decimal "ceiling1", precision: 8, scale: 2
+    t.decimal "ceiling2", precision: 8, scale: 2
+    t.decimal "strike", precision: 8, scale: 2
+    t.date "expiration"
+    t.string "asset"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,21 @@
+<% provide(:title, "BPS") %>
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col text-center">
+    <h1 class="bps">Short Calls</h1>
+    
+    <% if @short_calls.empty? %>
+      <div class="row">
+        <div class="col text-center">
+          <p>You have no open short call positions!</p>
+          <%= link_to "Create Short Call", new_short_call_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% else %>
+      <%= render 'shared/shortcall' %>
+    <% end %>
+
+
+  </div>
+</div>

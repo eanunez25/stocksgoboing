@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :bull_put_spreads
   has_many :short_puts
   has_many :bear_call_spreads
+  has_many :short_calls
 end

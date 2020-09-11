@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<% title = @short_call.asset + " " + number_to_currency(@short_call.strike).to_s %>
+<% provide(:title, title) %>
+
+<div class="row">
+  <div class="col-md-2 offset-md-4">
+    <h5 class="stats"><b>Security:</b></h5>
+    <h5 class="stats"><b>Current Price:</b></h5>
+    <h5 class="stats"><b>Expiration Date:</b></h5>
+    <h5 class="stats"><b>DTE:</b></h5>
+  </div>
+    <div class="col-md-2">
+      <h5 class="stats"><%= @short_call.asset %></h5>
+      <h5 class="stats"><%= number_to_currency(@price) %></h5>
+      <h5 class="stats"><%= @short_call.formatted_expiration %></h5>
+      <h5 class="stats"><%= @short_call.dte %> <%= 'day'.pluralize(@short_call.dte.to_i) %></h5>
+      <h5 class="stats">(<%= business_days_between(Date.today,@short_call.expiration) %> trading <%= 'day'.pluralize(@short_call.dte.to_i) %>)</h5>
+  </div>
+</div><br>
+
+<div class="row">
+  <div class="col text-center">
+    <%= link_to "Edit", edit_short_call_path, class: "btn btn-primary cards" %>
+    <%= link_to "Delete", short_call_path, class: "btn btn-danger cards", method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+</div>
+
+<% @ceilings.each_with_index do |f,i| %>
+  <div class="floor">
+    <% unless f.nil? %>
+      <div class="col text-center"><%= @ceiling_names[i] %></div>
+      <div class="row">
+        <div class="col-md-6 text-right">
+          <h1 class="floor"><%= number_to_currency(f) %></h1>
+        </div>
+        <div class="col-md-2 text-left my-auto">
+          <p class="stats"><%= number_to_currency(f-@price) %></p>
+          <p class="stats"><%= (((f-@price)/@price)*100).round(2) %>%</p>
+        </div>
+        <div class="col-md-2 text-left my-auto">
+          <p class="stats"><%= number_to_currency((f-@price)/@short_call.dte) %>/day</p>
+          <p class="stats-small">(approx. <%= (((f-@price)/@price)*100/@short_call.dte).round(2) %>%)</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
