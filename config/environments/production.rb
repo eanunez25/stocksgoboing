@@ -116,7 +116,7 @@ Rails.application.configure do
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
    :address              => "smtp.gmail.com",
-   :port                 => 587,
+   :port                 => 25,
    :domain               => 'stocksgoboing.herokuapp.com',
    :user_name            => ENV['email'],
    :password             => ENV['password'],
