@@ -1,1 +1,5 @@
-New trade
+Boing is now keeping track of your new position!
+
+
+Trade Details: 
+<%= @trade.class.to_s.underscore.humanize %> on the <%= @trade.asset %> that expires on <%= @trade.expiration.strftime("%m-%d-%y")  %>. The strike is at <%= number_to_currency(@trade.strike) %>.

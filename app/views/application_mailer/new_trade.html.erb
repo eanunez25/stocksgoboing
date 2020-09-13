@@ -1,3 +1,9 @@
-<html>
-  <p>New Trade</p>
-</html>
+<h1>New Trade</h1>
+
+<p>Boing is now keepinig track of your new position!</p>
+
+<h2>Trade Details: </h2>
+<p><%= @trade.class.to_s.underscore.humanize %> on the <%= @trade.asset %> that 
+expires on <%= @trade.expiration.strftime("%m-%d-%y")  %>. The strike is at <%= number_to_currency(@trade.strike) %>.</p>
+
+<br></br>
