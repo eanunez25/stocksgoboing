@@ -14,9 +14,9 @@ class ShortCallsController < ApplicationController
     @ceilings = [@short_call.ceiling1, @short_call.ceiling2, @short_call.strike]
     @ceiling_names = ["Celing 1", "Celing 2", "Strike"]
     if @short_call.asset == "FIVE"
-      @price = 128.99
+      @price = 134.07
     else
-      @price = 30.99     # SKX
+      @price = 32.84    # SKX
     end
   end
 

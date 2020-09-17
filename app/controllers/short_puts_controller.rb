@@ -14,9 +14,9 @@ class ShortPutsController < ApplicationController
     @floors = [@short_put.floor1, @short_put.floor2, @short_put.strike]
     @floor_names = ["Floor 1", "Floor 2", "Strike"]
     if @short_put.asset == "FIVE"
-      @price = 128.86
+      @price = 134.07
     else
-      @price = 30.99     # SKX
+      @price = 32.88     # SKX
     end
   end
 
