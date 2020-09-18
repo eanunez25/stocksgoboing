@@ -16,6 +16,10 @@
       <%= render 'shared/bps' %>
     <% end %>
 
+    <% if @closed.any? %>
+      <h2 class="bps">Closed Positions</h2>
+      <%= render 'bull_put_spreads/closed' %>    
+    <% end %>
 
   </div>
 </div>

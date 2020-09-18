@@ -16,6 +16,12 @@
       <%= render 'shared/bcs' %>
     <% end %>
 
+    <% if @closed.any? %>
+      <h2 class="bps">Closed Positions</h2>
+      <%= render 'bear_call_spreads/closed' %>      
+    <% end %>
+
+
 
   </div>
 </div>

@@ -5,7 +5,8 @@ class BearCallSpreadsController < ApplicationController
   # GET /bear_call_spreads
   # GET /bear_call_spreads.json
   def index
-    @bear_call_spreads = current_user.bear_call_spreads.all
+    @bear_call_spreads = current_user.bear_call_spreads.open
+    @closed = current_user.bear_call_spreads.closed
   end
 
     # GET /bear_call_spreads/1

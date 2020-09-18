@@ -5,7 +5,8 @@ class ShortCallsController < ApplicationController
   # GET /short_calls
   # GET /short_calls.json
   def index
-    @short_calls = current_user.short_calls.all
+    @short_calls = current_user.short_calls.open
+    @closed = current_user.short_calls.closed
   end
 
   # GET /short_calls/1

@@ -5,7 +5,8 @@ class ShortPutsController < ApplicationController
   # GET /short_puts
   # GET /short_puts.json
   def index
-    @short_puts = current_user.short_puts.all 
+    @short_puts = current_user.short_puts.open
+    @closed = current_user.short_puts.closed
   end
 
   # GET /short_puts/1

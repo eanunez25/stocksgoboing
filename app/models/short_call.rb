@@ -1,6 +1,9 @@
 class ShortCall < ApplicationRecord
   belongs_to :user
 
+  scope :open, -> { where('expiration > ?', Date.today) }
+  scope :closed, -> { where('expiration < ?', Date.today) }
+
   def dte 
     today = Date.today
     (expiration - today).to_i

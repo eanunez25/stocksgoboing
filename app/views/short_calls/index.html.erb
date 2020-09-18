@@ -16,6 +16,10 @@
       <%= render 'shared/shortcall' %>
     <% end %>
 
+    <% if @closed.any? %>
+      <h2 class="bps">Closed Positions</h2>
+      <%= render 'short_calls/closed' %>     
+    <% end %>
 
   </div>
 </div>
