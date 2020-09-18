@@ -39,8 +39,16 @@
         <%= form.date_select :expiration, order: [:month, :day, :year], start_year: Date.today.year  %>
       </div>
 
+      <div class="field">
+        <%= form.text_area :open_comments, class: "fadeIn seventh", id: "login", type: "text", placeholder: "Opening Comments" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_area :close_comments, class: "fadeIn eighth", id: "login", type: "text", placeholder: "Closing Comments" %>
+      </div>
+
       <div class="actions">
-        <%= form.submit "Save", type: "submit", class: "fadeIn seventh btn btn-primary" %>
+        <%= form.submit "Save", type: "submit", class: "fadeIn ninth btn btn-primary" %>
       </div>
 
     </div>

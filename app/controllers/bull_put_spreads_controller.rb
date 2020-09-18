@@ -12,9 +12,11 @@ class BullPutSpreadsController < ApplicationController
   # GET /bull_put_spreads/1
   # GET /bull_put_spreads/1.json
   def show
+    @bull_put_spread = BullPutSpread.find(params[:id])
     @floors = [@bull_put_spread.floor1, @bull_put_spread.floor2, @bull_put_spread.strike]
     @floor_names = ["Floor 1", "Floor 2", "Strike"]
     @rut_price = 1552.33
+
   end
 
   # GET /bull_put_spreads/new
@@ -67,6 +69,6 @@ class BullPutSpreadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bull_put_spread_params
-      params.require(:bull_put_spread).permit(:floor1, :floor2, :strike, :expiration, :asset)
+      params.require(:bull_put_spread).permit(:floor1, :floor2, :strike, :expiration, :asset, :open_comments, :close_comments)
     end
 end

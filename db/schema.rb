@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_180152) do
+ActiveRecord::Schema.define(version: 2020_09_18_181959) do
 
   create_table "bear_call_spreads", force: :cascade do |t|
     t.decimal "ceiling1", precision: 8, scale: 2
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_09_11_180152) do
     t.string "asset"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "open_comments"
+    t.text "close_comments"
   end
 
   create_table "bull_put_spreads", force: :cascade do |t|
@@ -32,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_09_11_180152) do
     t.string "asset"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "open_comments"
+    t.text "close_comments"
   end
 
   create_table "short_calls", force: :cascade do |t|
@@ -43,6 +47,8 @@ ActiveRecord::Schema.define(version: 2020_09_11_180152) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "open_comments"
+    t.text "close_comments"
   end
 
   create_table "short_puts", force: :cascade do |t|
@@ -54,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_09_11_180152) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "open_comments"
+    t.text "close_comments"
   end
 
   create_table "users", force: :cascade do |t|

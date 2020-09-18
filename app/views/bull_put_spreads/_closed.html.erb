@@ -14,6 +14,7 @@
               <% end %>
               <h6 class="card-subtitle mb-2 text-muted">Expired</h6>
               <p class="card-text"><%= bps.expiration.strftime("%m-%d-%y") %></p>
+              <a href="/<%= bps.class.name.to_s.underscore + "s" %>/<%= bps.id %>" class="btn-sm btn-primary cards">View</a>
               <a href="/<%= bps.class.name.to_s.underscore + "s" %>/<%= bps.id %>/edit" class="btn-sm btn-primary cards">Edit</a>
               <%= link_to "Delete", bull_put_spread_path(bps), class: "btn-sm btn-danger cards", method: :delete, data: { confirm: "Are you sure?" } %>
             </div>
