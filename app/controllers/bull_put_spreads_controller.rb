@@ -14,7 +14,7 @@ class BullPutSpreadsController < ApplicationController
   def show
     @floors = [@bull_put_spread.floor1, @bull_put_spread.floor2, @bull_put_spread.strike]
     @floor_names = ["Floor 1", "Floor 2", "Strike"]
-    @rut_price = 1483
+    @rut_price = 1485.25
   end
 
   # GET /bull_put_spreads/new
