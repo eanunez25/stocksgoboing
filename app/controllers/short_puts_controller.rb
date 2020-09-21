@@ -37,6 +37,7 @@ class ShortPutsController < ApplicationController
 
     if @short_put.save
       flash[:success] = "Saved!"
+      ApplicationMailer.new_trade(current_user, @short_put).deliver_now
       redirect_to @short_put
     else
       render 'new'
