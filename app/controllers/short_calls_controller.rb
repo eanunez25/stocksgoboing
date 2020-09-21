@@ -15,9 +15,9 @@ class ShortCallsController < ApplicationController
     @ceilings = [@short_call.ceiling1, @short_call.ceiling2, @short_call.strike]
     @ceiling_names = ["Celing 1", "Celing 2", "Strike"]
     if @short_call.asset == "FIVE"
-      @price = 134.07
+      @price = 129.3
     else
-      @price = 32.84    # SKX
+      @price = 29.34    # SKX
     end
   end
 
@@ -70,7 +70,7 @@ class ShortCallsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def short_call_params
-      params.require(:short_call).permit(:ceiling1, :ceiling2, :strike, :expiration, :asset)
+      params.require(:short_call).permit(:ceiling1, :ceiling2, :strike, :expiration, :asset, :open_comments, :close_comments)
     end
 
 end

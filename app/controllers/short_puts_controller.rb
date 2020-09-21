@@ -15,9 +15,9 @@ class ShortPutsController < ApplicationController
     @floors = [@short_put.floor1, @short_put.floor2, @short_put.strike]
     @floor_names = ["Floor 1", "Floor 2", "Strike"]
     if @short_put.asset == "FIVE"
-      @price = 134.07
+      @price = 129.3
     else
-      @price = 32.88     # SKX
+      @price = 29.34     # SKX
     end
   end
 
@@ -68,6 +68,6 @@ class ShortPutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def short_put_params
-      params.require(:short_put).permit(:floor1, :floor2, :strike, :expiration, :asset)
+      params.require(:short_put).permit(:floor1, :floor2, :strike, :expiration, :asset, :open_comments, :close_comments)
     end
 end

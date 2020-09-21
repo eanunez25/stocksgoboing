@@ -24,7 +24,38 @@
     <%= link_to "Edit", edit_short_put_path, class: "btn btn-primary cards" %>
     <%= link_to "Delete", short_put_path, class: "btn btn-danger cards", method: :delete, data: { confirm: "Are you sure?" } %>
   </div>
-</div>
+</div><br>
+
+<% if @short_put.open_comments.blank? == false %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 text-center">
+      <div class="card">
+        <div class="card-head">
+          <p><b>Openning Comments</b></p>
+        </div>
+        <div class="card-body text-left">
+          <p><%= @short_put.open_comments %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %><br>
+
+
+<% if @short_put.close_comments.blank? == false %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 text-center">
+      <div class="card">
+        <div class="card-head">
+          <p><b>Closing Comments</b></p>
+        </div>
+        <div class="card-body text-left">
+          <p><%= @short_put.close_comments %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <% @floors.each_with_index do |f,i| %>
   <div class="floor">

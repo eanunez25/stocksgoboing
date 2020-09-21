@@ -66,7 +66,7 @@ class BearCallSpreadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bear_call_spread_params
-      params.require(:bear_call_spread).permit(:ceiling1, :ceiling2, :strike, :expiration, :asset)
+      params.require(:bear_call_spread).permit(:ceiling1, :ceiling2, :strike, :expiration, :asset, :open_comments, :close_comments)
     end
 
 end
