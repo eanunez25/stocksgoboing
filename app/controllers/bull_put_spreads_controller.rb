@@ -12,11 +12,9 @@ class BullPutSpreadsController < ApplicationController
   # GET /bull_put_spreads/1
   # GET /bull_put_spreads/1.json
   def show
-    @bull_put_spread = BullPutSpread.find(params[:id])
     @floors = [@bull_put_spread.floor1, @bull_put_spread.floor2, @bull_put_spread.strike]
     @floor_names = ["Floor 1", "Floor 2", "Strike"]
-    @rut_price = 1552.33
-
+    @rut_price = 1483
   end
 
   # GET /bull_put_spreads/new
