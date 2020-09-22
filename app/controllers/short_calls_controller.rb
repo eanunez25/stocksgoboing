@@ -77,7 +77,7 @@ class ShortCallsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def short_call_params
-      params.require(:short_call).permit(:ceiling1, :ceiling2, :strike, :expiration, :asset, :open_comments, :close_comments)
+      params.require(:short_call).permit(:ceiling1, :ceiling2, :strike, :expiration, :asset.upcase, :open_comments, :close_comments)
     end
 
 end
