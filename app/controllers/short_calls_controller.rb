@@ -12,13 +12,19 @@ class ShortCallsController < ApplicationController
   # GET /short_calls/1
   # GET /short_calls/1.json
   def show
+    require 'finnhub_ruby'
+
+    FinnhubRuby.configure do |config|
+      config.api_key['token'] = ENV['finhub_api']
+    end
+    
+    finnhub_client = FinnhubRuby::DefaultApi.new
+
+    ticker = @short_call.asset
+    @price = finnhub_client.quote(ticker).c
+
     @ceilings = [@short_call.ceiling1, @short_call.ceiling2, @short_call.strike]
     @ceiling_names = ["Celing 1", "Celing 2", "Strike"]
-    if @short_call.asset == "FIVE"
-      @price = 129.3
-    else
-      @price = 29.34    # SKX
-    end
   end
 
   # GET /short_calls/new

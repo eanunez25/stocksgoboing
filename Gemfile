@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'figaro'
 gem 'sendgrid-ruby'
+gem 'finnhub_ruby', '~> 1.1.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

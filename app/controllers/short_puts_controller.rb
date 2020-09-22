@@ -12,13 +12,20 @@ class ShortPutsController < ApplicationController
   # GET /short_puts/1
   # GET /short_puts/1.json
   def show
+    require 'finnhub_ruby'
+
+    FinnhubRuby.configure do |config|
+      config.api_key['token'] = ENV['finhub_api']
+    end
+    
+    finnhub_client = FinnhubRuby::DefaultApi.new
+
+    ticker = @short_put.asset
+    @price = finnhub_client.quote(ticker).c
+
     @floors = [@short_put.floor1, @short_put.floor2, @short_put.strike]
     @floor_names = ["Floor 1", "Floor 2", "Strike"]
-    if @short_put.asset == "FIVE"
-      @price = 129.3
-    else
-      @price = 29.34     # SKX
-    end
+
   end
 
   # GET /short_puts/new
