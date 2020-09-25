@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :short_puts
   resources :bear_call_spreads
   resources :short_calls
+  resources :equities
 
   root 'static_pages#home'
 

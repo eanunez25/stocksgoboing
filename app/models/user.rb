@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :short_puts
   has_many :bear_call_spreads
   has_many :short_calls
+  has_many :equities
 end

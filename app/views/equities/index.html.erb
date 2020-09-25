@@ -1,0 +1,51 @@
+<%= provide(:title, "Watchlist") %>
+
+<div class="row">
+  <div class="col text-center">
+    <h1 class="bps">Watchlist</h1>
+    <%= link_to "Add Stock", new_equity_path, class: "btn btn-primary" %><br></br>
+
+    <% if @equities.empty? %>
+      <div class="row">
+        <div class="col text-center">
+          <p>You have no stocks in your watchlist</p>
+          <%= link_to "Add Stock", new_equity_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% else %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Ticker</th>
+            <th scope="col">Price</th>
+            <th scope="col">% Over Valuation</th>
+            <th scope="col">Valuation</th>
+            <th scope="col">Buy Price</th>
+            <th scope="col">% til Buy</th>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% @equities.each do |e| %>
+            <tr>
+              <td><%= e.ticker %></td>
+              <td><%= number_to_currency(@finnhub_client.quote(e.ticker).c) %></td>
+              <td><%= number_to_percentage((@finnhub_client.quote(e.ticker).c-e.valuation)/e.valuation*100, precision: 2) %></td>
+              <td><%= number_to_currency(e.valuation) %></td>
+              <td><%= number_to_currency(e.buy_price) %></td>
+              <td><%= number_to_percentage((e.buy_price-@finnhub_client.quote(e.ticker).c)/@finnhub_client.quote(e.ticker).c*100, precision: 2) %></td>
+              <td>
+                <%= link_to "View", equity_path(e), class: 'btn btn-primary btn-sm' %>
+                <%= link_to "Edit", edit_equity_path(e), class: 'btn btn-primary btn-sm' %>
+                <%= link_to "Delete", equity_path(e), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: "Are you sure?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    
+
+  </div>
+</div>
