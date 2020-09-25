@@ -76,6 +76,6 @@ class ShortPutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def short_put_params
-      params.require(:short_put).permit(:floor1, :floor2, :strike, :expiration, :asset.upcase, :open_comments, :close_comments)
+      params.require(:short_put).permit(:floor1, :floor2, :strike, :expiration, :asset, :open_comments, :close_comments)
     end
 end
