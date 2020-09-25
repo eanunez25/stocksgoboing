@@ -7,4 +7,16 @@ class StaticPagesController < ApplicationController
     @short_calls = current_user.short_calls.where('expiration > ?', Date.today).order('created_at ASC') if user_signed_in?
   end
 
+  def covid
+    require 'finnhub_ruby'
+
+    FinnhubRuby.configure do |config|
+      config.api_key['token'] = ENV['finhub_api']
+    end
+    
+    finnhub_client = FinnhubRuby::DefaultApi.new
+    @states = finnhub_client.covid19().sort_by { |st| st.state }
+
+  end
+
 end

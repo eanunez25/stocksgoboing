@@ -3,7 +3,7 @@ class EquitiesController < ApplicationController
   before_action :authenticate_user!
 
   def index 
-    @equities = current_user.equities.all
+    @equities = current_user.equities.all.order('ticker ASC')
 
     require 'finnhub_ruby'
 
@@ -15,7 +15,15 @@ class EquitiesController < ApplicationController
   end
 
   def show
+    require 'finnhub_ruby'
 
+    FinnhubRuby.configure do |config|
+      config.api_key['token'] = ENV['finhub_api']
+    end
+    
+    @finnhub_client = FinnhubRuby::DefaultApi.new
+    
+    @equity = Equity.find(params[:id])
   end
 
   def new 

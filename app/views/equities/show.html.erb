@@ -1,0 +1,46 @@
+<%= provide(:title, @equity.ticker) %>
+
+<div class="row">
+  <div class="col text-center">
+    <h1><%= @equity.ticker %></h1>
+    <h2><%= @finnhub_client.company_profile2({symbol: @equity.ticker}).name %></h2>
+    <p><%= @finnhub_client.company_profile2({symbol: @equity.ticker}).exchange %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-6">
+    <div class="row">
+      <h2 clas="bps">Financial Information</h2>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td scope="col">Market Cap: <%= number_to_currency(@finnhub_client.company_profile2({symbol: @equity.ticker}).market_capitalization) %>m</td>
+          </tr>
+          <tr>
+            <td scope="col">Shares Out: <%= number_with_precision(@finnhub_client.company_profile2({symbol: @equity.ticker}).share_outstanding, delimiter: ",", precision: 2) %>m</td>
+          </tr>
+
+          <% @finnhub_client.company_basic_financials(@equity.ticker, "all").metric.each do |k,v| %>
+            <tr>
+              <td scope="col"><%= k %>: <%= v %></td>
+            </tr>
+            
+          <% end %>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <h2>More Information</h2>
+    </div> 
+
+  </div>
+
+  <div class="col col-md-6">
+    <h2 class="text-center">News</h2>
+    <% @finnhub_client.company_news(@equity.ticker, Date.today - 3.months, Date.today).each do |h| %>
+      <p><%= link_to "#{h.summary}", h.url %></p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<%= provide(:title, "COVID-19") %>
+
+<div class="row">
+  <div class="col col-md-8 offset-md-2">
+    <h1 class="bps text-center">COVID-19</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Postive Cases</th>
+          <th scope="col">Deaths</th>
+          <th scope="col">Mortality Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @states.each do |st| %>
+          <tr>
+            <td><%= st.state %></td>
+            <td><%= number_with_precision(st._case, delimiter: ",", precision: 0) %></td>
+            <td><%= number_with_precision(st.death, delimiter: ",", precision: 0) %></td>
+            <td><%= number_to_percentage(st.death/st._case*100, precision: 2) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+  </div>
+</div>
