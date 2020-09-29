@@ -1,43 +1,105 @@
 <%= provide(:title, @equity.ticker) %>
 
 <div class="row">
-  <div class="col text-center">
+  <div class="col col-md-6 offset-md-3 text-center">
     <h1><%= @equity.ticker %></h1>
     <h2><%= @finnhub_client.company_profile2({symbol: @equity.ticker}).name %></h2>
     <p><%= @finnhub_client.company_profile2({symbol: @equity.ticker}).exchange %></p>
   </div>
+  <div class="col col-md-3 text-right">
+    <h1 class="price"><%= number_to_currency(@finnhub_client.quote(@equity.ticker).c) %></h1>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col col-md-6">
+  <div class="col col-md-5">
     <div class="row">
-      <h2 clas="bps">Financial Information</h2>
+      <h2 class="bps">Financial Information</h2>
       <table class="table table-striped">
         <tbody>
           <tr>
-            <td scope="col">Market Cap: <%= number_to_currency(@finnhub_client.company_profile2({symbol: @equity.ticker}).market_capitalization) %>m</td>
+            <td scope="col"><b>Market Cap: </b><%= number_to_currency(@finnhub_client.company_profile2({symbol: @equity.ticker}).market_capitalization) %>m</td>
           </tr>
           <tr>
-            <td scope="col">Shares Out: <%= number_with_precision(@finnhub_client.company_profile2({symbol: @equity.ticker}).share_outstanding, delimiter: ",", precision: 2) %>m</td>
+            <td scope="col"><b>Shares Out: </b><%= number_with_precision(@finnhub_client.company_profile2({symbol: @equity.ticker}).share_outstanding, delimiter: ",", precision: 2) %>m</td>
           </tr>
-
-          <% @finnhub_client.company_basic_financials(@equity.ticker, "all").metric.each do |k,v| %>
-            <tr>
-              <td scope="col"><%= k %>: <%= v %></td>
-            </tr>
-            
-          <% end %>
-
+          <tr>
+            <td scope="col"><b>52 Week High: </b><%= number_to_currency(@finnhub_client.company_basic_financials(@equity.ticker, "all").metric[:"52WeekHigh"]) %></td>
+          </tr>
+          <tr>
+            <td scope="col"><b>52 Week Low: </b><%= number_to_currency(@finnhub_client.company_basic_financials(@equity.ticker, "all").metric[:"52WeekLow"]) %></td>
+          </tr>
+          <tr>
+            <td scope="col"><b>Beta: </b><%= @finnhub_client.company_basic_financials(@equity.ticker, "all").metric[:"beta"] %></td>
+          </tr>         
         </tbody>
       </table>
     </div>
+
     <div class="row">
-      <h2>More Information</h2>
+      <h2 class="bps">Analyst Recommendation</h2>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td scope="col"><b>Period: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].period %></td>
+          </tr>
+          <tr>
+            <td scope="col"><b>Strong Buy: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].strong_buy %></td>
+          </tr>     
+          <tr>
+            <td scope="col"><b>Buy: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].buy %></td>
+          </tr>    
+          <tr>
+            <td scope="col"><b>Hold: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].hold %></td>
+          </tr>
+          <tr>
+            <td scope="col"><b>Sell: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].sell %></td>
+          </tr>
+          <tr>
+            <td scope="col"><b>Strong Sell: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].strong_sell %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+
+    <div class="row">
+      <h2 class="bps">Analyst Price Targets</h2>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td scope="col"><b>High: </b><%= number_to_currency(@finnhub_client.price_target(@equity.ticker).target_high) %></td>
+          </tr>  
+          <tr>
+            <td scope="col"><b>Low: </b><%= number_to_currency(@finnhub_client.price_target(@equity.ticker).target_low) %></td>
+          </tr>    
+          <tr>
+            <td scope="col"><b>Median: </b><%= number_to_currency(@finnhub_client.price_target(@equity.ticker).target_median) %></td>
+          </tr> 
+          <tr>
+            <td scope="col"><b>Average: </b><%= number_to_currency(@finnhub_client.price_target(@equity.ticker).target_mean) %></td>
+          </tr> 
+        </tbody>
+      </table>
+    </div> 
+
+    <div class="row">
+      <h2 class="bps">Current Buy Price</h2>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td scope="col"><b>Valuation: </b><%= number_to_currency(@equity.valuation) %></td>
+          </tr>  
+          <tr>
+            <td scope="col"><b>Buy Price: </b><%= number_to_currency(@equity.buy_price) %></td>
+          </tr>    
+
+        </tbody>
+      </table>
     </div> 
 
   </div>
 
-  <div class="col col-md-6">
+  <div class="col col-md-6 offset-md-1">
     <h2 class="text-center">News</h2>
     <% @finnhub_client.company_news(@equity.ticker, Date.today - 3.months, Date.today).each do |h| %>
       <p><%= link_to "#{h.summary}", h.url %></p>
