@@ -36,31 +36,30 @@
       </table>
     </div>
 
-    <div class="row">
-      <h2 class="bps">Analyst Recommendation</h2>
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <td scope="col"><b>Period: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].period %></td>
-          </tr>
-          <tr>
-            <td scope="col"><b>Strong Buy: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].strong_buy %></td>
-          </tr>     
-          <tr>
-            <td scope="col"><b>Buy: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].buy %></td>
-          </tr>    
-          <tr>
-            <td scope="col"><b>Hold: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].hold %></td>
-          </tr>
-          <tr>
-            <td scope="col"><b>Sell: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].sell %></td>
-          </tr>
-          <tr>
-            <td scope="col"><b>Strong Sell: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].strong_sell %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div> 
+    <% unless @finnhub_client.recommendation_trends(@equity.ticker)[0] == nil %>
+      <div class="row">
+        <h2 class="bps">Analyst Recommendation</h2>
+        <table class="table table-striped">
+          <tbody>
+              <tr>
+                <td scope="col"><b>Strong Buy: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].strong_buy %></td>
+              </tr>     
+              <tr>
+                <td scope="col"><b>Buy: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].buy %></td>
+              </tr>    
+              <tr>
+                <td scope="col"><b>Hold: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].hold %></td>
+              </tr>
+              <tr>
+                <td scope="col"><b>Sell: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].sell %></td>
+              </tr>
+              <tr>
+                <td scope="col"><b>Strong Sell: </b><%= @finnhub_client.recommendation_trends(@equity.ticker)[0].strong_sell %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>      
+    <% end %>
 
     <div class="row">
       <h2 class="bps">Analyst Price Targets</h2>
