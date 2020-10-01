@@ -16,7 +16,12 @@ class StaticPagesController < ApplicationController
     
     finnhub_client = FinnhubRuby::DefaultApi.new
     @states = finnhub_client.covid19().sort_by { |st| st.state }
+  end
 
+  def rut
+    s = File.read("rut.json")
+    probabilities = JSON.parse(s)
+    @probabilities = probabilities["JSON"]
   end
 
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/trades', to: 'static_pages#show_trades'
   get 'bps', to: 'bull_put_spreads#index'
   get '/covid19', to: 'static_pages#covid'
+  get '/rut', to: 'static_pages#rut'
 
   devise_scope :user do
     # register

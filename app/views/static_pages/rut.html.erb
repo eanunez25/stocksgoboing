@@ -1,0 +1,28 @@
+<%= provide(:title, "RUT Probabilities") %>
+
+<div class="row">
+  <div class="col col-md-8 offset-md-2">
+    <h1 class="bps text-center">RUT Return Probabilities</h1>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">% Change</th>
+          <th scope="col">DTE</th>
+          <th scope="col">% Below</th>
+          <th scope="col">% Above</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @probabilities.each do |p| %>
+          <tr>
+            <td><%= p["percent_change"] %></td>
+            <td><%= p["dte"] %></td>
+            <td><%= p["probability_below"] %></td>
+            <td><%= p["probability_above"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
