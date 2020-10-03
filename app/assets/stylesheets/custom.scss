@@ -436,3 +436,87 @@ h1.login {
 h1.price {
   font-size: 70px;
 }
+
+// * {
+//   border: red 1px solid;
+// }
+
+
+/* home */ 
+
+div.banner {
+  margin: 100px 0px;
+}
+
+h1.header {
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 72px;
+  text-align: left;
+}
+
+h5.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+p.card-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+div.cards {
+  margin-bottom: 200px;
+}
+
+h3.header {
+  font-size: 32px;
+  font-weight: 600px;
+  line-height: 42px;
+  margin-bottom: 24px;
+}
+
+img.example {
+  border: rgb(108, 118, 127) 1px solid;
+  border-radius: 10px;
+}
+
+.vertical {
+ margin-top: 10%;
+}
+
+ul.home li {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 34px;
+  margin-bottom: 24px;
+  list-style: none;
+  color: rgb(108, 118, 127)
+}
+
+i.fas {
+  margin-right: 10px;
+  color: blue;
+}
+
+ul.home {
+  padding-inline-start: 0px;
+}
+
+div.section {
+  margin-bottom: 200px;
+}
+
+img.watchlist {
+  width: 100%;
+}
+
+div.watchlist-features {
+  padding-left: 40px;
+}
+
+.center {
+  text-align: center;
+}
