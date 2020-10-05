@@ -2,17 +2,17 @@
 
   <% unless user_signed_in? %>
 </div>
-    <div class="row banner">
+    <div class="row banner section">
       <div class="col col-md-4 offset-md-2 text-center home">
         <h1 class="header">Keep track of your options trades and watchlist</p>
         <%= link_to "Create a free acount", signup_path, class: "btn btn-primary" %>
       </div>
       <div class="col col-md-6">
-        <%= image_tag "laptop.PNG", width: "100%", class: "home" %>
+        <%= image_tag "laptop.PNG", width: "100%", class: "home laptop" %>
       </div>
     </div>
 
-    <div class="row cards">
+    <div class="row cards section">
       <div class="col col-md-8 offset-md-2">
         <div class="card-deck">
           <div class="card">
