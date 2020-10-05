@@ -523,6 +523,11 @@ div.watchlist-features {
 
 @media only screen and (max-width: 600px) {
   img.home {
-    width: 50vh;
+    width: 95vw;
   }
+
+  div.col {
+    padding-left: 25px
+  }
+
 }
