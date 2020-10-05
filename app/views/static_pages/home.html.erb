@@ -1,110 +1,115 @@
-<% provide(:title, "Home") %>
+  <% provide(:title, "Home") %>
 
-<% unless user_signed_in? %>
-  <div class="row banner">
-    <div class="col col-md-5 text-center home">
-      <h1 class="header">Keep track of your options trades and watchlist</p>
-      <%= link_to "Create a free acount", signup_path, class: "btn btn-primary" %>
-    </div>
-    <div class="col col-md-6">
-      <%= image_tag "laptop.PNG" %>
-    </div>
-  </div>
-
-  <div class="row cards">
-    <div class="card-deck">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Watch for floors and ceilings</h5>
-          <p class="card-text">and keep track of how far away the market price is from your indicators</p>
-        </div>
+  <% unless user_signed_in? %>
+</div>
+    <div class="row banner">
+      <div class="col col-md-4 offset-md-2 text-center home">
+        <h1 class="header">Keep track of your options trades and watchlist</p>
+        <%= link_to "Create a free acount", signup_path, class: "btn btn-primary" %>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Watchlist</h5>
-          <p class="card-text">is designed to show how far away your companies are from your calculated buy price</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Utilize probability out the money</h5>
-          <p class="card-text">to gauge if your trades will expire ITM or if your companies are reaching their buy price</p>
-        </div>
+      <div class="col col-md-6">
+        <%= image_tag "laptop.PNG", width: "100%", class: "home" %>
       </div>
     </div>
-  </div>
 
-<%# 
-  <div class="row">
-    <h1 class="header">Floors and ceilings</h1>
-  </div> %>
-  <div class="row section">
-    <div class="col col-md-6 vertical">
-      <h3 class="header">Track your floors and ceilings</h1>
-      <ul class="home">
-        <li><i class="fas fa-chart-line"></i>Calculate the distance from market price to various floors or ceilings</li>
-        <li><i class="fas fa-chart-line"></i>Estimate daily return/loss to gauge safe zone</li>
-        <li><i class="fas fa-chart-line"></i>Estimate the probability of reaching a price level</li>
-      </ul>
+    <div class="row cards">
+      <div class="col col-md-8 offset-md-2">
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Watch for floors and ceilings</h5>
+              <p class="card-text">and keep track of how far away the market price is from your indicators</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Watchlist</h5>
+              <p class="card-text">is designed to show how far away your companies are from your calculated buy price</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Utilize probability out the money</h5>
+              <p class="card-text">to gauge if your trades will expire ITM or if your companies are reaching their buy price</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="col col-md-6">
-      <%= image_tag "floor.PNG", width: "125%", class: "example"%>
+
+  <%# 
+    <div class="row">
+      <h1 class="header">Floors and ceilings</h1>
+    </div> %>
+    <div class="row section">
+      <div class="col col-md-4 offset-md-2 vertical">
+        <h3 class="header">Track your floors and ceilings</h1>
+        <ul class="home">
+          <li><i class="fas fa-chart-line"></i>Calculate the distance from market price to various floors or ceilings</li>
+          <li><i class="fas fa-chart-line"></i>Estimate daily return/loss to gauge safe zone</li>
+          <li><i class="fas fa-chart-line"></i>Estimate the probability of reaching a price level</li>
+        </ul>
+      </div>
+      <div class="col col-md-5">
+        <%= image_tag "floor.PNG", width: "100%", class: "example home"%>
+      </div>
     </div>
-  </div>
 
-  <div class="row section">
-    <div class="col col-md-8">
-      <%= image_tag "watchlist.png", class: "watchlist" %>
+    <div class="row section">
+      <div class="col col-md-7 offset-md-1">
+        <%= image_tag "watchlist.png", class: "watchlist home" %>
+      </div>
+      <div class="col col-md-3 watchlist-features">
+        <h3 class="header vertical">Monitor your watchlist</h3>
+        <ul class="home">
+          <li><i class="fas fa-chart-line"></i>Set equity valuation and buy price</li>
+          <li><i class="fas fa-chart-line"></i>Monitor how close market price is to buy price</li>
+          <li><i class="fas fa-chart-line"></i>Estimate the probability of reaching buy price</li>
+          <li><i class="fas fa-chart-line"></i>Keep up with company news</li>
+        </ul>
+      </div>
     </div>
-    <div class="col col-md-4 watchlist-features">
-      <h3 class="header vertical">Monitor your watchlist</h3>
-      <ul class="home">
-        <li><i class="fas fa-chart-line"></i>Set equity valuation and buy price</li>
-        <li><i class="fas fa-chart-line"></i>Monitor how close market price is to buy price</li>
-        <li><i class="fas fa-chart-line"></i>Estimate the probability of reaching buy price</li>
-        <li><i class="fas fa-chart-line"></i>Keep up with company news</li>
-      </ul>
+
+    <div class="row section">
+      <div class="col text-center">
+        <%= link_to "Create a free acount", signup_path, class: "btn btn-primary btn-lg" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row section">
-    <div class="col text-center">
-      <%= link_to "Create a free acount", signup_path, class: "btn btn-primary btn-lg" %>
+
+
+
+
+  <% else %>
+    <div class="row">
+      <div class="col text-center">
+        <% if !@bull_put_spreads.empty? || !@short_puts.empty? || !@bear_call_spreads.empty? %>
+          <h1 class="bps">Active Trades</h1>
+        <% end %>
+        <% unless @bull_put_spreads.empty? %>
+          <h2 class="bps">Bull Put Spreads (<%= @bull_put_spreads.count %>)</h2>
+          <%= render 'shared/bps' %>
+        <% end %>
+        <% unless @bear_call_spreads.empty? %>
+          <h2 class="bps">Bear Call Spreads (<%= @bear_call_spreads.count %>)</h2>
+          <%= render 'shared/bcs' %>
+        <% end %>
+        <% unless @short_puts.empty? %>
+          <h2 class="bps">Short Puts (<%= @short_puts.count %>)</h2>
+          <%= render 'shared/shortput' %>
+        <% end %>
+        <% unless @short_calls.empty? %>
+          <h2 class="bps">Short Calls (<%= @short_calls.count %>)</h2>
+          <%= render 'shared/shortcall' %>
+        <% end %>
+        <% if @bull_put_spreads.empty? && @short_puts.empty? && @bear_call_spreads.empty?%>
+          <h1>Welcome to Boing</h1>
+          <p>You have no trades! Create a new trade from the dropdown menu.</p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
 
-
-
-
-
-<% else %>
-  <div class="row">
-    <div class="col text-center">
-      <% if !@bull_put_spreads.empty? || !@short_puts.empty? || !@bear_call_spreads.empty? %>
-        <h1 class="bps">Active Trades</h1>
-      <% end %>
-      <% unless @bull_put_spreads.empty? %>
-        <h2 class="bps">Bull Put Spreads (<%= @bull_put_spreads.count %>)</h2>
-        <%= render 'shared/bps' %>
-      <% end %>
-      <% unless @bear_call_spreads.empty? %>
-        <h2 class="bps">Bear Call Spreads (<%= @bear_call_spreads.count %>)</h2>
-        <%= render 'shared/bcs' %>
-      <% end %>
-      <% unless @short_puts.empty? %>
-        <h2 class="bps">Short Puts (<%= @short_puts.count %>)</h2>
-        <%= render 'shared/shortput' %>
-      <% end %>
-      <% unless @short_calls.empty? %>
-        <h2 class="bps">Short Calls (<%= @short_calls.count %>)</h2>
-        <%= render 'shared/shortcall' %>
-      <% end %>
-      <% if @bull_put_spreads.empty? && @short_puts.empty? && @bear_call_spreads.empty?%>
-        <h1>Welcome to Boing</h1>
-        <p>You have no trades! Create a new trade from the dropdown menu.</p>
-      <% end %>
-    </div>
-  </div>
-<% end %>
 
