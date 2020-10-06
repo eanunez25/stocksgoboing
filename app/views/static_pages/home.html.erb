@@ -35,7 +35,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
   <%# 
@@ -68,6 +67,66 @@
           <li><i class="fas fa-chart-line"></i>Estimate the probability of reaching buy price</li>
           <li><i class="fas fa-chart-line"></i>Keep up with company news</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h1 class="header sup-strats text-center">Supported Strategies</h1>
+      </div>
+    </div>
+    <div class="row cards">
+      <div class="col col-md-8 offset-md-2">
+        <div class="card-deck">
+          <div class="card">
+            <%= image_tag "covered_call.png", class: "card-img-top strat" %>
+            <div class="card-body">
+              <h5 class="card-title">Covered Call</h5>
+              <p class="card-text">Earn income on your stock. Strike will depend on whether you want your shares to be called.</p>
+            </div>
+          </div>
+          <div class="card">
+            <%= image_tag "short_call.png", class: "card-img-top strat" %>
+            <div class="card-body">
+              <h5 class="card-title">Short Call</h5>
+              <p class="card-text">Make money as long as underlying price is at or below the strike price.</p>
+            </div>
+          </div>
+          <div class="card">
+            <%= image_tag "short_put.png", class: "card-img-top strat" %>
+            <div class="card-body">
+              <h5 class="card-title">Short Put</h5>
+              <p class="card-text">As long as price stays above the strike, you make the maximum profit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row cards section">
+      <div class="col col-md-8 offset-md-2">
+        <div class="card-deck">
+          <div class="card">
+            <%= image_tag "bcs.png", class: "card-img-top strat" %>
+            <div class="card-body">
+              <h5 class="card-title">Bear Call Spread</h5>
+              <p class="card-text">Make money as long as underlying price is at or below the strike price.</p>
+            </div>
+          </div>
+          <div class="card">
+            <%= image_tag "bps.png", class: "card-img-top strat" %>
+            <div class="card-body">
+              <h5 class="card-title">Bull Put Spread</h5>
+              <p class="card-text">You want the underlying to be above the strike to keep the profit.</p>
+            </div>
+          </div>
+          <div class="card">
+            <%= image_tag "condor.png", class: "card-img-top strat" %>
+            <div class="card-body">
+              <h5 class="card-title">Iron Condor</h5>
+              <p class="card-text">Achieve maxium profit if price stays between strikes.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
