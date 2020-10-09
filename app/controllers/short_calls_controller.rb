@@ -43,7 +43,7 @@ class ShortCallsController < ApplicationController
 
     if @short_call.save
       flash[:success] = "Saved!"
-      ApplicationMailer.new_trade(current_user, @short_call).deliver_now
+      # ApplicationMailer.new_trade(current_user, @short_call).deliver_now
       redirect_to @short_call
     else
       render 'new'

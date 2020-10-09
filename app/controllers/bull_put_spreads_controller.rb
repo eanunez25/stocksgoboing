@@ -33,7 +33,7 @@ class BullPutSpreadsController < ApplicationController
 
     if @bull_put_spread.save
       flash[:success] = "Saved!"
-      ApplicationMailer.new_trade(current_user, @bull_put_spread).deliver_now
+      # ApplicationMailer.new_trade(current_user, @bull_put_spread).deliver_now
       redirect_to @bull_put_spread
     else
       render 'new'

@@ -33,7 +33,7 @@ class BearCallSpreadsController < ApplicationController
 
     if @bear_call_spread.save
       flash[:success] = "Saved!"
-      ApplicationMailer.new_trade(current_user, @bear_call_spread).deliver_now
+      # ApplicationMailer.new_trade(current_user, @bear_call_spread).deliver_now
       redirect_to @bear_call_spread
     else
       render 'new'
