@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto', sans-serif; 
+}
+
 /* navbar */ 
 
 a.signup {
@@ -77,6 +81,10 @@ h5.card-title {
 
 h2.bps {
   margin-top: 30px;
+}
+
+.date {
+  line-height: 140% !important;
 }
 
 
