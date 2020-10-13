@@ -1,6 +1,6 @@
 <%= provide(:title, @equity.ticker) %>
 
-<div class="row">
+<div class="row head">
   <div class="col col-md-6 offset-md-3 text-center">
     <h1><%= @equity.ticker %></h1>
     <h2><%= @finnhub_client.company_profile2({symbol: @equity.ticker}).name %></h2>

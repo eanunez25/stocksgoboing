@@ -537,6 +537,51 @@ h1.sup-strats {
   margin-bottom: 30px;
 }
 
+/* equity show */ 
+
+.row.head {
+  margin-top: 20px;
+}
+
+
+
+
+
+@media only screen and (max-width: 900px) {
+  div.col-sm-3 {
+    max-width: 50% !important;
+    flex: 0 0 auto;
+  }
+
+  div.col-md-2 {
+    max-width: 50% !important;
+    flex: 0 0 auto;    
+  }
+
+  div.head div.col-md-3 {
+    flex: 0 0 auto;
+    max-width: 100%;
+    text-align: center !important;
+  }
+
+  .offset-md-4 {
+    margin-left: 0 !important;
+  }
+
+  .col-md-2.offset-md-4 {
+    padding-left: 20%;
+  }
+
+  .col-md-6.text-right {
+    max-width: 100%;
+    text-align: center !important;
+    flex: 0 0 auto;
+  }
+
+  .col-md-2.text-left {
+    padding-left: 15%;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   img.home {
@@ -553,6 +598,23 @@ h1.sup-strats {
 
   img.laptop {
     margin-top: 20px;
+  }
+
+  div.col-sm-3 {
+    max-width: 100% !important;
+    flex: 0 0 auto;
+  }
+
+  h1.price {
+    text-align: center;
+  }
+
+  .col-md-2.offset-md-4 {
+    padding-left: 5%;
+  }
+
+  .col-md-2.text-left {
+    padding-left: 2%;
   }
 
 }
