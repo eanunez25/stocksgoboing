@@ -5,12 +5,14 @@
 
 <div class="row">
   <div class="col-md-2 offset-md-4">
+    <h5 class="stats"><b>Strategy:</b></h5>
     <h5 class="stats"><b>Security:</b></h5>
     <h5 class="stats"><b>Current Price:</b></h5>
     <h5 class="stats"><b>Expiration Date:</b></h5>
     <h5 class="stats"><b>DTE:</b></h5>
   </div>
     <div class="col-md-2">
+    <h5 class="stats">Bull put spread</h5>
       <h5 class="stats"><%= @bull_put_spread.asset %></h5>
       <h5 class="stats"><%= number_to_currency(@rut_price) %></h5>
       <h5 class="stats"><%= @bull_put_spread.formatted_expiration %></h5>
