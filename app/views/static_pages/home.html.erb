@@ -147,19 +147,19 @@
           <h1 class="bps top"><strong>Active Trades</strong></h1>
         <% end %>
         <% unless @bull_put_spreads.empty? %>
-          <h2 class="bps"><strong>Bull Put Spreads (<%= @bull_put_spreads.count %>)</strong></h2>
+          <h2 class="bps"><strong><a href="/bps" class="trade">Bull Put Spreads (<%= @bull_put_spreads.count %>)</a></strong></h2>
           <%= render 'shared/bps' %>
         <% end %>
         <% unless @bear_call_spreads.empty? %>
-          <h2 class="bps"><strong>Bear Call Spreads (<%= @bear_call_spreads.count %>)</strong></h2>
+          <h2 class="bps"><strong><a href="/bcs" class="trade">Bear Call Spreads (<%= @bear_call_spreads.count %>)</a></strong></h2>
           <%= render 'shared/bcs' %>
         <% end %>
         <% unless @short_puts.empty? %>
-          <h2 class="bps"><strong>Short Puts (<%= @short_puts.count %>)</strong></h2>
+          <h2 class="bps"><strong><a href="/short_puts" class="trade">Short Puts (<%= @short_puts.count %>)</a></strong></h2>
           <%= render 'shared/shortput' %>
         <% end %>
         <% unless @short_calls.empty? %>
-          <h2 class="bps"><strong>Short Calls (<%= @short_calls.count %>)</strong></h2>
+          <h2 class="bps"><strong><a href="/short_calls" class="trade">Short Calls (<%= @short_calls.count %>)</a></strong></h2>
           <%= render 'shared/shortcall' %>
         <% end %>
         <% if @bull_put_spreads.empty? && @short_puts.empty? && @bear_call_spreads.empty?%>
