@@ -6,7 +6,7 @@
     <h2><%= @finnhub_client.company_profile2({symbol: @equity.ticker}).name %></h2>
     <p><%= @finnhub_client.company_profile2({symbol: @equity.ticker}).exchange %></p>
   </div>
-  <div class="col col-md-3 text-right">
+  <div class="col col-md-3 text-right price">
     <h1 class="price"><%= number_to_currency(@finnhub_client.quote(@equity.ticker).c) %></h1>
   </div>
 </div>

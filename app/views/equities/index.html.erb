@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col text-center">
-    <h1 class="bps">Watchlist (<%= @equities.count %>)</h1>
+    <h1 class="bps top">Watchlist (<%= @equities.count %>)</h1>
     <%= link_to "Add Stock", new_equity_path, class: "btn btn-primary" %><br></br>
 
     <% if @equities.empty? %>
