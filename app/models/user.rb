@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :bear_call_spreads
   has_many :short_calls
   has_many :equities
+  has_many :companies
+  has_many :comments, through: :companies
 end
