@@ -1,25 +1,14 @@
 <p id="notice"><%= notice %></p>
+<% provide(:title, "Radar") %>
 
-<h1>Companies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<h1 class="center top">Radar</h1>
 <br>
 
-<%= link_to 'New Company', new_company_path %>
+<div class="col col-md-3">
+  <%= render 'companies/equities' %>
+</div>
+
+
+
+
+

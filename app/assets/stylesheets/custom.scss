@@ -652,3 +652,34 @@ a.trade:hover {
   }
 
 }
+
+
+/* ------------------------------radar------------------------------ */
+
+div.radar-list {
+  width: 100%;
+  // border-top: rgb(199, 199, 199) solid 1px;
+}
+
+p.radar-list {
+  margin-left: 3vw;
+  margin-bottom: 0px;
+}
+
+.radar-header {
+  border-bottom: rgb(199, 199, 199) solid 1px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+div.absolute-comment-box {
+  position: absolute;
+  left: 30vw;
+  width: 60vw;
+}
+
+div.comment {
+  margin-top: 20px;
+}
+
+

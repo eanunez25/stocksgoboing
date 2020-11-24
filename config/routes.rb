@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :short_calls
   resources :equities
 
+
+  resources :companies
+  resources :comments
+
   root 'static_pages#home'
 
   get '/trades', to: 'static_pages#show_trades'

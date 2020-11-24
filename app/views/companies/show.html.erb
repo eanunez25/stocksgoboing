@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
+<% provide(:title, @company.ticker) %>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<h1 class="center top"><%= @company.ticker %></h1>
+<br>
+
+<div class="row">
+  <div class="col col-md-3">
+    <%= render 'companies/equities' %>
+  </div>
+
+  <div class="absolute-comment-box">
+    <div class="border">
+      <%= render 'comments/form', comment: @comment %>
+    </div>
+
+
+    <div class="comment border">
+      <p>boobs</p>
+    </div>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,10 @@
+<%= form_with(path: new_company_comment_path(company_id: @company), action: create, local: true) do |form| %>
+
+
+  <div class="actions">
+    <div class="field">
+      <%= form.text_area :note, id: "login", type: "text", placeholder: "comment"  %>
+    </div>
+    <%= form.submit %>
+  </div>
+<% end %>

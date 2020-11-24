@@ -11,7 +11,21 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+
+      <div class="fadeIn first">
+        <h1 class="login">Company</h1>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :ticker, class: "fadeIn second", id: "login", type: "text", placeholder: "Ticker"  %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Save", type: "submit", class: "fadeIn third btn btn-primary" %>
+      </div>
+
+    </div>
   </div>
 <% end %>

@@ -1,15 +1,18 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = current_user.companies.all.order(:ticker)
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @companies = current_user.companies.all.order(:ticker)
+    @comments = @company.comments.all
   end
 
   # GET /companies/new
@@ -24,30 +27,22 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
+    @company = current_user.companies.build(company_params)
 
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render :show, status: :created, location: @company }
-      else
-        format.html { render :new }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    if @company.save
+      flash[:success] = "Saved!"
+      redirect_to companies_path
+    else
+      render 'new'
     end
   end
 
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
-    respond_to do |format|
-      if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { render :show, status: :ok, location: @company }
-      else
-        format.html { render :edit }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    if @company.update(company_params)
+      flash[:success] = "Company updated!"
+      redirect_to @company
     end
   end
 
@@ -55,10 +50,8 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1.json
   def destroy
     @company.destroy
-    respond_to do |format|
-      format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Trade deleted!"
+    redirect_to companies_path
   end
 
   private
@@ -69,6 +62,6 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.fetch(:company, {})
+      params.require(:company).permit(:ticker)
     end
 end
