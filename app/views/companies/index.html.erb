@@ -4,14 +4,27 @@
 <h1 class="center top">Radar</h1>
 <br>
 
-
-
 <div class="row">
   <div class="col col-md-3">
     <%= render 'companies/equities' %>
   </div>
 
   <div class="absolute-comment-box">
+    <% if @companies.empty? %>
+      <div class="wrapper">
+        <div id="formContent-lg" class="left">
+          <p class="note">You have no companies under your radar. Add a company to start taking notes on your companies.</p>  
+        </div>
+      </div> 
+    <% end %>
+    <% if @comments.empty? %>
+      <div class="wrapper">
+        <div id="formContent-lg" class="left">
+          <p class="note">Click on a ticker to add a comment.</p>  
+        </div>
+      </div> 
+    <% end %> 
+
     <% @comments.each do |c| %>
       <div class="wrapper">
           <div id="formContent-lg" class="left">

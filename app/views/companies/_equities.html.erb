@@ -4,11 +4,11 @@
     <h4>Companies   <%= link_to '+', new_company_path, class: "btn btn-primary btn-sm center" %></h4>
   </div>
 
+  <% if @companies.empty? %>
+    <p class="radar-list">No companies on radar</p>
+  <% end %>
   <% @companies.each do |company| %>
     <div class="radar-list">
-      <% if @companies.empty? %>
-        <p class="radar-list">Add a company to your radar</p>
-      <% end %>
       <p class="radar-list"><%= link_to company.ticker, company_path(company.id) %></p>
     </div>
   <% end %>
