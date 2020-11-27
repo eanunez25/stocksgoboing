@@ -6,6 +6,9 @@
 
   <% @companies.each do |company| %>
     <div class="radar-list">
+      <% if @companies.empty? %>
+        <p class="radar-list">Add a company to your radar</p>
+      <% end %>
       <p class="radar-list"><%= link_to company.ticker, company_path(company.id) %></p>
     </div>
   <% end %>
