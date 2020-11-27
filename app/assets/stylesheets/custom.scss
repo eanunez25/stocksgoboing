@@ -153,6 +153,20 @@ p.stats-small {
   text-align: center;
 }
 
+#formContent-lg {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 90%;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
 #formFooter {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
@@ -443,8 +457,29 @@ input[type=password]:placeholder {
   width:30%;
 }
 
-h1.login {
+.login {
   margin-top: 20px;
+}
+
+.text-area {
+  width: 90%;
+  height: 100px;
+}
+
+.left {
+  text-align: left !important;
+}
+
+.note {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.date-comment {
+  color: grey;
+  font-size: 15px;
+  float: right;
 }
 
 
@@ -651,6 +686,16 @@ a.trade:hover {
     padding: 00px 0;
   }
 
+  div.absolute-comment-box {
+    position: relative !important;
+    left: 0vw !important;
+    width: 100vw !important;
+  }
+
+  div.wrapper {
+    min-height: 0%;
+  }
+
 }
 
 
@@ -682,4 +727,17 @@ div.comment {
   margin-top: 20px;
 }
 
+p.note-ticker {
+  font-weight: bolder;
+}
 
+
+/* ------------------------------comments------------------------------ */
+.less-margin {
+  margin-left: 0px !important;
+  margin-right: 5px !important;
+}
+
+p.no-left-margin {
+  margin-left: 0px;
+}

@@ -1,10 +1,35 @@
-<%= form_with(path: new_company_comment_path(company_id: @company), action: create, local: true) do |form| %>
+<%= form_with(model: @comment, local: true) do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-
-  <div class="actions">
-    <div class="field">
-      <%= form.text_area :note, id: "login", type: "text", placeholder: "comment"  %>
+      <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
-    <%= form.submit %>
+  <% end %>
+
+<div class="wrapper">
+    <div id="formContent-lg">
+
+      <div class="">
+        <h3 class="login">Add Note</h1>
+      </div>
+
+      <div class="field">
+        <%= form.text_area :note, id: "login", type: "text", class: "text-area" %>
+      </div>
+
+      <%= form.hidden_field :company_id, value: @company.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :price, value: @price %>
+
+      <div class="actions">
+        <%= form.submit "Save", type: "submit", class: "btn btn-primary" %>
+      </div>
+
+    </div>
   </div>
 <% end %>

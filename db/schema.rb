@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_033549) do
+ActiveRecord::Schema.define(version: 2020_11_27_034021) do
 
   create_table "bear_call_spreads", force: :cascade do |t|
     t.decimal "ceiling1", precision: 8, scale: 2
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_033549) do
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price", precision: 8, scale: 2
   end
 
   create_table "companies", force: :cascade do |t|

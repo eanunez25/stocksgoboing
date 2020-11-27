@@ -4,8 +4,27 @@
 <h1 class="center top">Radar</h1>
 <br>
 
-<div class="col col-md-3">
-  <%= render 'companies/equities' %>
+
+
+<div class="row">
+  <div class="col col-md-3">
+    <%= render 'companies/equities' %>
+  </div>
+
+  <div class="absolute-comment-box">
+    <% @comments.each do |c| %>
+      <div class="wrapper">
+          <div id="formContent-lg" class="left">
+            <p class="note note-ticker"><%= c.company.ticker %></p>
+            <p class="note"><%= c.note %></p>
+            <%= link_to "Delete", comment_path(c), class: "btn-sm btn-danger btn note date-comment less-margin", method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Edit", edit_comment_path(c.id), class: "note date-comment btn btn-primary btn-sm less-margin" %>
+            <p class="note date-comment no-left-margin"><%= c.created_at.strftime("%B %d, %Y") %></p>
+            <p class="note date-comment">$<%= c.price %></p>   
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>
 
 

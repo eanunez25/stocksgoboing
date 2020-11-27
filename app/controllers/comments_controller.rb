@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = current_user.comments.all
+    @comments = @company.all
   end
 
   # GET /comments/1
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = current_user.Company.find_by_id(:company_id).comments.new
+    @comment = @company.comments.build
   end
 
   # GET /comments/1/edit
@@ -25,11 +25,11 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = current_user.Company.find_by_id(:company_id).comments.build(comment_params)
+    @comment = current_user.comments.build(comment_params)
 
     if @comment.save
       flash[:success] = 'Saved!'
-      redirect_to companies_path
+      redirect_back(fallback_location: root_path)
     else
       render 'new'
     end
@@ -38,14 +38,9 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.update(comment_params)
+      flash[:success] = "Comment updated!"
+      redirect_to company_path(@comment.company_id)
     end
   end
 
@@ -53,21 +48,18 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Comment deleted"
+    redirect_back(fallback_location: root_path)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @company = Company.find(params[:id])
       @comment = Comment.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.permit(:note, :company_id)
+      params.require(:comment).permit(:note, :company_id, :user_id, :price)
     end
 end

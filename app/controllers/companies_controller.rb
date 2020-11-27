@@ -6,13 +6,27 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = current_user.companies.all.order(:ticker)
+    @comments = current_user.comments.all.order('created_at DESC')
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
     @companies = current_user.companies.all.order(:ticker)
-    @comments = @company.comments.all
+    @comments = @company.comments.all.order('created_at DESC')
+    @comment = Comment.new
+
+    require 'finnhub_ruby'
+
+    FinnhubRuby.configure do |config|
+      config.api_key['token'] = ENV['finhub_api']
+    end
+    
+    finnhub_client = FinnhubRuby::DefaultApi.new
+
+    ticker = @company.ticker
+    @price = finnhub_client.quote(ticker).c
+    @name = finnhub_client.company_profile2({symbol: ticker}).name
   end
 
   # GET /companies/new
@@ -50,7 +64,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1.json
   def destroy
     @company.destroy
-    flash[:success] = "Trade deleted!"
+    flash[:success] = "Company deleted!"
     redirect_to companies_path
   end
 
