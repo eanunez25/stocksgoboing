@@ -15,6 +15,7 @@ class BearCallSpreadsController < ApplicationController
     @ceilings = [@bear_call_spread.ceiling1, @bear_call_spread.ceiling2, @bear_call_spread.strike]
     @ceiling_names = ["Celing 1", "Celing 2", "Strike"]
     @rut_price = 1917.78
+  end
 
   # GET /bear_call_spreads/new
   def new
