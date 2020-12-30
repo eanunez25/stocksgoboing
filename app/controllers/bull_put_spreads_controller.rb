@@ -5,7 +5,7 @@ class BullPutSpreadsController < ApplicationController
   # GET /bull_put_spreads
   # GET /bull_put_spreads.json
   def index
-    @bull_put_spreads = current_user.bull_put_spreads.open
+    @bull_put_spreads = current_user.bull_put_spreads.open.order(:expiration)
     @closed = current_user.bull_put_spreads.closed
   end
 
